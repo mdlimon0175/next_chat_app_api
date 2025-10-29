@@ -1,0 +1,16 @@
+# Ignore node modules
+/node_modules
+
+# Ignore all files in public/uploads directory
+/public/uploads/*
+
+# Ignore all log files in storage/ directory
+# private_uploads, logs etc.
+/storage/*
+
+# Ignore environment variable files
+.env
+.env.*
+
+# Allow example env file
+!.env.example

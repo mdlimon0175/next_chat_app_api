@@ -1,0 +1,44 @@
+{
+  "name": "next_chat_api",
+  "version": "1.0.0",
+  "repository": {},
+  "type": "commonjs",
+  "description": "Secure and efficient chat app API for real-time communication, designed with scalability and performance in mind.",
+  "main": "app.js",
+  "jest": {
+    "preset": "@shelf/jest-mongodb"
+  },
+  "scripts": {
+    "start": "nodemon --env-file=.env server.js",
+    "build": "node --env-file=.env server.js"
+  },
+  "keywords": [
+    "api",
+    "chat-app",
+    "real-time",
+    "nodejs",
+    "expressjs"
+  ],
+  "author": "Kiam Khan Limon",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^7.1.0",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "express-rate-limit": "^8.1.0",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.12.1",
+    "multer": "^1.4.5-lts.1",
+    "sharp": "^0.33.5",
+    "socket.io": "^4.8.1",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "@shelf/jest-mongodb": "^5.2.2",
+    "jest": "^30.2.0",
+    "supertest": "^7.1.4"
+  }
+}
