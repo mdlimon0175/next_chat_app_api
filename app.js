@@ -11,6 +11,7 @@ const express = require('express');
 const { join } = require('path');
 const cors = require('cors');
 const { default: helmet } = require('helmet');
+require('dotenv').config();
 
 const { privateRouter, publicRouter } = require('./routes/api');
 const { globalRateLimit } = require('./http/middleware/rateLimitMiddleware');
