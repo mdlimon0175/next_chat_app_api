@@ -20,6 +20,7 @@ const { errorHandler, notFoundHandler } = require('./http/middleware/errorMiddle
 // create express app
 const app = express();
 app.disable('x-powered-by');
+app.set('trust proxy', true);
 
 // app middleware
 app.use(helmet());
