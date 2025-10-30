@@ -9,7 +9,7 @@
     "preset": "@shelf/jest-mongodb"
   },
   "scripts": {
-    "start": "nodemon --env-file=.env server.js",
+    "start": "nodemon server.js",
     "build": "node server.js"
   },
   "keywords": [

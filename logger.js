@@ -2,8 +2,12 @@
 const { join } = require("path");
 const { existsSync, mkdirSync } = require("fs");
 const { createLogger, format, transports } = require("winston");
+const { isProduction } = require("./config/app");
 
-const logDir = join(__dirname, 'storage', 'logs');
+/**
+* @note for vercel we use tmp directory. it will be join(__dirname, 'storage', 'logs');
+*/
+const logDir = isProduction ? join('tmp', 'logs') : join(__dirname, 'storage', 'logs');
 
 if (!existsSync(logDir)) {
     mkdirSync(logDir, { recursive: true });

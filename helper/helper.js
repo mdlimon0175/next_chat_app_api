@@ -1,7 +1,7 @@
 const { join } = require("path");
 
 const logger = require("../logger");
-const { app_url } = require("../config/app");
+const { app_url, isProduction } = require("../config/app");
 const { existsSync } = require("fs");
 
 function apiResponse(status = true, message = "", data = null, error = null) {
@@ -14,7 +14,11 @@ function apiResponse(status = true, message = "", data = null, error = null) {
 }
 
 function getPublicPath() {
-    return join(__dirname, '..', 'public');
+    /**
+     * @note vercel avoid express.static to serve public files.
+     */
+    const public_path = isProduction ? join('..', 'public') : join(__dirname, '..', 'public');
+    return public_path;
 }
 
 function getPublicFilePath(pathname) {

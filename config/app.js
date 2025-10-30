@@ -8,6 +8,7 @@ const db_name = process.env.DB_NAME ?? "test_db";
 
 const appConfig = {
     // app config
+    isProduction,
     debug: process.env.NODE_ENV === "development",
     app_name: process.env.APP_NAME,
     port,
