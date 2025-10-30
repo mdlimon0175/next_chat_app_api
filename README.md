@@ -38,6 +38,9 @@ If you're using npm:
    yarn start
    ```
 
+## Tips
+You can run npm start db:seed for first time to generate demo users and conversations.
+
 ## Usage 
 
 By default, the server runs at `http://localhost:8000` if no port number is specified in the `.env` file.
