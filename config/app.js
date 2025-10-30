@@ -22,7 +22,7 @@ const appConfig = {
 
     // database config
     databaseURL: isProduction
-        ? `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${db_host}/${db_name}?retryWrites=true&w=majority`
+        ? `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${db_host}/${db_name}?appName=${process.env.DB_APPNAME}&retryWrites=true&w=majority`
         : `mongodb://${db_host}:${db_port}/${db_name}`,
 };
 

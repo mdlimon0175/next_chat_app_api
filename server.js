@@ -28,6 +28,7 @@ io.on('connection', (socket) => {
 server.listen(appConfig.port, () => {
     console.log(`Server running on port - ${appConfig.port}`);
     mongoose.connect(appConfig.databaseURL).then(fullfill => {
+        console.log("database connected!");
         const runSeeder = process.argv.findIndex(argv => argv === 'db:seed') !== -1;
         if(process.env.NODE_ENV === 'production' && runSeeder) {
             DatabaseSeeder.run().then(result => {
