@@ -7,7 +7,7 @@ const { extname, join } = require("path");
 const { debug } = require("../../config/app");
 const { apiResponse } = require("../../helper/helper");
 const errorMessage = require("../../enum/errorMessage");
-const fileFieldname = require("../../enum/fileFieldName");
+const fileFieldname = require("../../enum/fileFieldname");
 
 class ApiError extends Error {
     constructor(status = 500, message = "Internal Server Error!") {

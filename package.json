@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "nodemon --env-file=.env server.js",
-    "build": "node --env-file=.env server.js"
+    "build": "node server.js"
   },
   "keywords": [
     "api",

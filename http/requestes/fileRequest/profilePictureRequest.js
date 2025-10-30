@@ -2,7 +2,7 @@ const { MulterError } = require('multer');
 
 const fileUploader = require("../../../helper/fileUploader");
 const { formatFileSize } = require('../../../helper/helper');
-const { PROFILE_PICTURE } = require('../../../enum/fileFieldName');
+const { PROFILE_PICTURE } = require('../../../enum/fileFieldname');
 
 const maxSize = 1048600; // 1mb
 const fileTypes = ['image/jpeg', 'image/jpg', 'image/png'];

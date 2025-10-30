@@ -5,7 +5,7 @@ const User = require('../../models/User');
 const TokenBlacklist = require("../../models/TokenBlacklist");
 
 const filePathname = require("../../enum/filePathname");
-const fileFieldname = require("../../enum/fileFieldName");
+const { PROFILE_PICTURE } = require("../../enum/fileFieldname");
 
 const logger = require('../../logger');
 const imageResizer = require("../../helper/imageResizer");
@@ -32,7 +32,7 @@ class AuthService {
     }
 
     async uploadProfilePicutre(file) {
-        if (file && file.fieldname === fileFieldname.PROFILE_PICTURE) {
+        if (file && file.fieldname === PROFILE_PICTURE) {
             const { filename, path: destination } = file;
             return await imageResizer(filename).catch(error => {
                 const file_path = join(getPublicFilePath(filePathname.USER), filename);
