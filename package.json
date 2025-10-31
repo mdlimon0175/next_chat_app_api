@@ -9,8 +9,8 @@
     "preset": "@shelf/jest-mongodb"
   },
   "scripts": {
-    "start": "nodemon server.js db:seed",
-    "build": "node server.js db:seed"
+    "start": "nodemon server.js",
+    "build": "node server.js"
   },
   "keywords": [
     "api",
