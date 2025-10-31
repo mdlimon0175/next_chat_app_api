@@ -25,6 +25,12 @@ mongoose.connect(appConfig.databaseURL).then(fullfill => {
                 console.log('Failed to seed data');
             }
         })
+    } else {
+        console.log({
+            message: 'Failed to seed data',
+            argv: process.argv,
+            env: process.env.NODE_ENV
+        });
     }
 }).catch(err => {
     console.log(err);

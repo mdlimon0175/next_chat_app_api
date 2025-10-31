@@ -58,7 +58,7 @@ class ConversationFactory {
                 })
                 return {
                     created_by: this.#getRandomCreator(users),
-                    participants: usersModel.map(user => user._id),
+                    participants: users.map(user => user._id),
                 }
             } catch(error) {
                 console.log(`ConversationFactory: Failed to create conversation participants - ${error?.message}`);

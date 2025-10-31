@@ -3,17 +3,22 @@ const { faker } = require("@faker-js/faker");
 
 
 class UserFactory {
-    #password;
+    #password = '1234';
+    #hashedPassword;
 
     async getPassword() {
-        if(this.#password) {
-            return this.#password
+        return this.#password;
+    }
+
+    async #getHashedPassword() {
+        if(this.#hashedPassword) {
+            return this.#hashedPassword
         }
-        return this.#password = await hash('1234', 10);
+        return this.#hashedPassword = await hash(this.#password, 10);
     }
 
     async getAdmin() {
-        const password = await this.getPassword();
+        const password = await this.#getHashedPassword();
         return {
             username: 'mdlimon0175',
             email: 'mdlimon0175@gmail.com',
@@ -22,7 +27,7 @@ class UserFactory {
     }
 
     async getUser() {
-        const password = await this.getPassword();
+        const password = await this.#getHashedPassword();
         return {
             username: faker.internet.userName(),
             email: faker.internet.email(),
