@@ -1,5 +1,4 @@
 const app = require('./app');
-const mongoose = require('mongoose');
 const { createServer } = require('http');
 const { Server: SocketServer } = require('socket.io');
 
@@ -7,34 +6,13 @@ const { Server: SocketServer } = require('socket.io');
 const appConfig = require('./config/app');
 
 // others
+const connectDB = require('./db');
 const onSocketConnectionHandler = require('./socket');
 const socketAuthMiddleware = require('./http/middleware/socketAuthMiddleware');
-const DatabaseSeeder = require('./database/seeders/DatabaseSeeder');
 
-// create server
+// create server and connect databasse
 const server = createServer(app);
-
-mongoose.connect(appConfig.databaseURL).then(fullfill => {
-    console.log("database connected!");
-    const runSeeder = process.argv.findIndex(argv => argv === 'db:seed') !== -1;
-    if(process.env.NODE_ENV === 'production' && runSeeder) {
-        DatabaseSeeder.run().then(result => {
-            if(result) {
-                console.log('Seed successful!');
-            } else {
-                console.log('Failed to seed data');
-            }
-        })
-    } else {
-        console.log({
-            message: 'Failed to seed data',
-            argv: process.argv,
-            env: process.env.NODE_ENV
-        });
-    }
-}).catch(err => {
-    console.log(err);
-});
+connectDB();
 
 // socket.io setup
 const io = new SocketServer(server, {
