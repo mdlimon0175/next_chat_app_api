@@ -9,7 +9,7 @@ async function connectDB() {
         /**
         * @note run seeder once. multiple seed can cause database error.
         */
-        const runSeeder = process.env.RUN_SEED === 'true';
+        const runSeeder = process.env.RUN_SEED.toLowerCase() === 'true';
         if(runSeeder) {
             DatabaseSeeder.run().then(result => {
                 if(result) {
