@@ -14,7 +14,8 @@ const loginRequest = require('../http/requestes/loginRequest');
 const registrationRequest = require('../http/requestes/registrationRequest');
 const conversationRequest = require('../http/requestes/conversationRequest');
 const profileInfoRequest = require('../http/requestes/profileInfoRequest');
-const profilePictureRequest = require('../http/requestes/fileRequest/profilePictureRequest');
+// we deploy our api to vercel. it's complicated to upload files to serverless environment.
+// const profilePictureRequest = require('../http/requestes/fileRequest/profilePictureRequest');
 const requestValidationMiddleware = require('../http/middleware/requestValidationMiddleware');
 const checkProfileUpdatePermission = require('../http/middleware/checkProfileUpdatePermission');
 const { 
@@ -43,7 +44,8 @@ publicRouter.post('/login', [
 ]);
 publicRouter.post('/registration', [
     authRateLimit,
-    profilePictureRequest,
+    // profilePictureRequest,
+    multer().none(),
     registrationRequest,
     requestValidationMiddleware,
     asyncHandler(AuthController.registration)
@@ -57,7 +59,8 @@ privateRoute('get', '/users/:search', asyncHandler(UserController.getUser));
 privateRoute('put', '/users/:user_id/change_profile_info', [
     profileInfoChangeRateLimit,
     asyncHandler(checkProfileUpdatePermission),
-    profilePictureRequest,
+    // profilePictureRequest,
+    multer().none(),
     profileInfoRequest,
     requestValidationMiddleware,
     asyncHandler(UserController.changeProfileInfo)

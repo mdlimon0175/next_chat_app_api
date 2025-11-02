@@ -1,5 +1,6 @@
-const ConversationSeeder = require("./ConversationSeeder");
+const logger = require("../../logger");
 const UserSeeder = require("./UserSeeder");
+const ConversationSeeder = require("./ConversationSeeder");
 
 class DatabaseSeeder {
     async run() {
@@ -9,6 +10,10 @@ class DatabaseSeeder {
 
             return true;
         } catch(error) {
+            logger.error("Failed to seed", {
+                error_message: error?.message,
+                stack: error?.stack
+            });
             return false;
         }
     }
