@@ -4,14 +4,14 @@ const UserFactory = require("../factories/UserFactory");
 class UserSeeder {
     async run() {
         const userData = await UserFactory.getAdmin();
-        await User.insertOne(userData, { lean: true });
+        await User.insertOne(userData);
 
         return;
     }
 
     async seedMany(count = 5) {
         const usersData = await UserFactory.getUsers(count);
-        const users = await User.insertMany(usersData, { lean: true });
+        const users = await User.insertMany(usersData);
 
         console.log({
             users: {
@@ -25,7 +25,7 @@ class UserSeeder {
 
     async seedOne() {
         const userData = await UserFactory.getUser();
-        const user = await User.insertOne(userData, { lean: true });
+        const user = await User.insertOne(userData);
 
         console.log({
             users: {
