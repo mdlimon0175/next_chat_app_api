@@ -1,6 +1,7 @@
 const { hash } = require("bcrypt");
 const { faker } = require("@faker-js/faker");
 
+const { jwt_salt_round } = require("../../config/app");
 
 class UserFactory {
     #password = '1234';
@@ -14,7 +15,7 @@ class UserFactory {
         if(this.#hashedPassword) {
             return this.#hashedPassword
         }
-        return this.#hashedPassword = await hash(this.#password, 10);
+        return this.#hashedPassword = await hash(this.#password, jwt_salt_round);
     }
 
     async getAdmin() {

@@ -4,7 +4,16 @@ const UserFactory = require("../factories/UserFactory");
 class UserSeeder {
     async run() {
         const userData = await UserFactory.getAdmin();
-        await User.insertOne(userData);
+        const existingUserData = await User.findOne({
+            email: userData.email,
+            username: userData.username
+        });
+
+        if(existingUserData) {
+            console.log(`Admin email - ${userData.email}`);
+        } else {
+            await User.insertOne(userData);
+        }
 
         return;
     }
