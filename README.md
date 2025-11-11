@@ -39,7 +39,11 @@ If you're using npm:
    ```
 
 ## Tips
-You can run npm start db:seed for first time to generate demo users and conversations.
+You can run npm start db:seed for first time to generate demo users and conversations. \
+A demo user account will be created.
+username: admin;
+email: admin@test.com \
+And a conversation will be created with new random users. You will get the users email and password from the terminal console.
 
 ## Usage 
 

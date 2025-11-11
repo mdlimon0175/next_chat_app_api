@@ -14,7 +14,8 @@ const loginRequest = require('../http/requestes/loginRequest');
 const registrationRequest = require('../http/requestes/registrationRequest');
 const conversationRequest = require('../http/requestes/conversationRequest');
 const profileInfoRequest = require('../http/requestes/profileInfoRequest');
-// we deploy our api to vercel. it's complicated to upload files to serverless environment.
+
+// we moved vercel to render.com. render have some limit for file upload on free service.
 // const profilePictureRequest = require('../http/requestes/fileRequest/profilePictureRequest');
 const requestValidationMiddleware = require('../http/middleware/requestValidationMiddleware');
 const checkProfileUpdatePermission = require('../http/middleware/checkProfileUpdatePermission');

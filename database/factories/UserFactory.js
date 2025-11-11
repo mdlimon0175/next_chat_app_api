@@ -21,8 +21,8 @@ class UserFactory {
     async getAdmin() {
         const password = await this.#getHashedPassword();
         return {
-            username: 'mdlimon0175',
-            email: 'mdlimon0175@gmail.com',
+            username: 'admin',
+            email: 'admin@test.com',
             password
         }
     }

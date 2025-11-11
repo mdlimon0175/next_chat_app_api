@@ -47,12 +47,22 @@ class ConversationFactory {
             }
         } else {
             try {
-                const usersData = await UserFactory.getUsers(2);
-                const users = await User.insertMany(usersData, { lean: true });
+                const usersCount = await User.countDocuments();
+                let users;
+                let usersCollection;
+                if (usersCount >= 2) {
+                    usersCollection = await User.find().limit(2).select('_id email');
+                    users = usersCollection.map(user => user._id);
+                } else {
+                    const usersData = await UserFactory.getUsers(2);
+                    usersCollection = await User.insertMany(usersData);
+
+                    users = usersCollection.map(user => user._id);
+                }
 
                 console.log({
                     users: {
-                        insertedEmails: users.map(user => user.email),
+                        insertedEmails: usersCollection.map(user => user.email),
                         password: await UserFactory.getPassword()
                     }
                 })

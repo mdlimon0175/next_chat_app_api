@@ -17,7 +17,7 @@ const appConfig = {
 
     // jwt config
     jwt_secret: process.env.JWT_SECRET_KEY ?? "jwt_secret",
-    jwt_salt_round: process.env.SALT_ROUNDS ?? 10,
+    jwt_salt_round: parseInt(process.env.SALT_ROUNDS) ?? 10,
     token_expire: process.env.TOKEN_EXPIRE ?? "4h",
 
     // database config
