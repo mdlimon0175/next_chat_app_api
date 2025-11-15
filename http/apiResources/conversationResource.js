@@ -1,5 +1,6 @@
-const { prepareChatParticipantsInfo } = require("../../helper/helper");
+const { imageUrl } = require("../../helper/helper");
 
+const imageCache = new Map();
 function conversationResource(data) {
     const prepareConversations = (c) => ({
         id: c._id,
@@ -12,7 +13,22 @@ function conversationResource(data) {
         } : null,
     });
 
-    return Array.isArray(data) ? data.map(prepareConversations) : prepareConversations(data);
+    const finalData = Array.isArray(data) ? data.map(prepareConversations) : prepareConversations(data);
+    imageCache.clear();
+    return finalData;
+}
+
+function prepareChatParticipantsInfo(participants = []) {
+    return participants.map(p => {
+        if (!imageCache.has(p.username)) {
+            imageCache.set(p.username, imageUrl(p.profile_picture_icon));
+        }
+        return {
+            id: p._id,
+            username: p.username,
+            profile_picture_icon: imageCache.get(p.username),
+        };
+    });
 }
 
 module.exports = conversationResource;
