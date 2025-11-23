@@ -25,6 +25,7 @@ const {
     conversationStoreRateLimit,
     messageStoreRateLimit 
 } = require('../http/middleware/rateLimitMiddleware');
+const requestMongoIdValidation = require('../http/middleware/requestMongoIdValidation');
 
 // router object
 const publicRouter = express.Router({ caseSensitive: true });
@@ -59,6 +60,7 @@ privateRoute('get', '/token_user', asyncHandler(AuthController.tokenUser));
 privateRoute('get', '/users/:search', asyncHandler(UserController.getUser));
 privateRoute('put', '/users/:user_id/change_profile_info', [
     profileInfoChangeRateLimit,
+    requestMongoIdValidation('user_id'),
     asyncHandler(checkProfileUpdatePermission),
     // profilePictureRequest,
     multer().none(),
@@ -69,7 +71,10 @@ privateRoute('put', '/users/:user_id/change_profile_info', [
 
 // conversations routes
 privateRoute('get', '/conversations', asyncHandler(ConversationController.index));
-privateRoute('get', '/conversations/:conversation_id', asyncHandler(ConversationController.show));
+privateRoute('get', '/conversations/:conversation_id', [
+    requestMongoIdValidation('conversation_id'),
+    asyncHandler(ConversationController.show)
+]);
 privateRoute('post', '/conversations', [
     conversationStoreRateLimit,
     multer().none(),
@@ -79,9 +84,13 @@ privateRoute('post', '/conversations', [
 ]);
 
 // messages routes
-privateRoute('get', '/messages/c/:conversation_id', asyncHandler(MessageController.index));
+privateRoute('get', '/messages/c/:conversation_id', [
+    requestMongoIdValidation('conversation_id'),
+    asyncHandler(MessageController.index)
+]);
 privateRoute('post', '/messages/c/:conversation_id', [
     messageStoreRateLimit,
+    requestMongoIdValidation('conversation_id'),
     multer().none(),
     conversationRequest,
     requestValidationMiddleware,
