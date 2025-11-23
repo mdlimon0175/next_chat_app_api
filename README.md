@@ -123,6 +123,22 @@ Receives ` {room_id, call_id, candidate} ` and emits a single event based on req
 Receives ` {stream_type: 'video'|'audio', stream_status: boolean, call_id, room_id} ` help to inform partner about stream toggle status.
 - emit `call_remote_video_stream_toggled` or `call_remote_audio_stream_toggled` based on stream_type and data.status have the stream_status value.
 
+### Packages
+Here are the dependencies used in this project, along with their links to the official documentation or repositories:
+
+- [**Expressjs**](https://expressjs.com) - Fast, unopinionated, minimalist web framework for Node.js.
+- [**Mongoose**](https://mongoosejs.com) - Elegant MongoDB object modeling for Node.js.
+- [**Jsonwebtoken**](https://github.com/auth0/node-jsonwebtoken) - An implementation of JSON Web Tokens.
+- [**Multer**](https://github.com/expressjs/multer) - Multer is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files.
+- [**Express Rate Limit**](https://github.com/express-rate-limit/express-rate-limit) - Basic rate-limiting middleware for Express.
+- [**Express Validator**](https://express-validator.github.io/docs) - express-validator is a set of express.js middlewares that wraps the extensive collection of validators and sanitizers offered by validator.js.
+- [**Bcrypt**](https://github.com/kelektiv/node.bcrypt.js) - A library to help you hash passwords.
+- [**Helmet**](https://github.com/helmetjs/helmet) - Help secure Express apps by setting HTTP response headers.
+- [**CORS**](https://socket.io/) - CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
+- [**@faker-js/faker**](https://github.com/faker-js/faker) - Generate massive amounts of fake (but realistic) data for testing and development.
+- [**Socket.io**](https://socket.io/) - Bidirectional and low-latency communication for every platform.
+- [**Sharp**](https://sharp.pixelplumbing.com) - High performance Node.js image processing.
+- [**Winston**](https://github.com/winstonjs/winston) - A logger for just about everything.
 
 ## Contact Information
 - **Email**: [mdlimon0175@gmail.com](mailto:mdlimon0175@gmail.com)
